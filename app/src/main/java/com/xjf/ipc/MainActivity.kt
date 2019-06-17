@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         BookServiceManager.getInstance().bindService(this)
         BookServiceManager.getInstance().registerListener(mCallBackInterface)
-        BookServiceManager.getInstance().registerListener(mCallBackInterface)
+        BookServiceManager.getInstance().registerListener(mCallBackInterface1)
         tv_add.setOnClickListener {
             BookServiceManager.getInstance().addBook(Book("数学","数学书"))
             BookServiceManager.getInstance().addBook(Book("语文","语文书"))
