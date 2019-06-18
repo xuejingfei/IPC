@@ -1,4 +1,4 @@
-package com.xjf.ipc;
+package com.xjf.customaidl;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
+import com.xjf.customaidl.aidl.Book;
+import com.xjf.customaidl.aidl.BookInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,6 @@ public class BookServiceManager {
 
     private BookInterface mBookInterface;
 
-    private List<NotifyCallBackInterface> mListeners = new ArrayList<>();
 
     public static BookServiceManager getInstance() {
         if (mInstance == null) {
@@ -42,25 +43,12 @@ public class BookServiceManager {
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.d("xjf", "service connect");
             mBookInterface = BookInterface.Stub.asInterface(service);
-            try {
-                for (NotifyCallBackInterface callBackInterface : mListeners) {
-                    mBookInterface.registerListener(callBackInterface);
-                }
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
             Log.d("xjf", "service onServiceDisconnected");
-            try {
-                for (NotifyCallBackInterface callBackInterface : mListeners) {
-                    mBookInterface.unregisterListener(callBackInterface);
-                }
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
+
         }
     };
 
@@ -100,47 +88,12 @@ public class BookServiceManager {
      */
     public List<Book> getBooks() {
         try {
-            return mBookInterface.getBookList();
+            return mBookInterface.getBooks();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    /**
-     * 注册接口
-     *
-     * @param notifyCallBackInterface
-     */
-    public void registerListener(NotifyCallBackInterface notifyCallBackInterface) {
-
-        try {
-            if (mBookInterface != null) {
-                mBookInterface.registerListener(notifyCallBackInterface);
-            } else {
-                mListeners.add(notifyCallBackInterface);
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    /**
-     * 解除注册
-     *
-     * @param notifyCallBackInterface
-     */
-    public void unRegisterListener(NotifyCallBackInterface notifyCallBackInterface) {
-        try {
-            if (mBookInterface != null) {
-                mBookInterface.unregisterListener(notifyCallBackInterface);
-            } else {
-                mListeners.remove(notifyCallBackInterface);
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-    }
 
 }

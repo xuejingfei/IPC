@@ -3,6 +3,7 @@ package com.xjf.ipc
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log
+import com.xjf.customaidl.AidlActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -27,8 +28,8 @@ class MainActivity : AppCompatActivity() {
         BookServiceManager.getInstance().registerListener(mCallBackInterface)
         BookServiceManager.getInstance().registerListener(mCallBackInterface1)
         tv_add.setOnClickListener {
-            BookServiceManager.getInstance().addBook(Book("数学","数学书"))
-            BookServiceManager.getInstance().addBook(Book("语文","语文书"))
+            BookServiceManager.getInstance().addBook(Book("数学", "数学书"))
+            BookServiceManager.getInstance().addBook(Book("语文", "语文书"))
         }
 
 
@@ -37,6 +38,13 @@ class MainActivity : AppCompatActivity() {
                 Log.d("xjf",book.name)
             }
         }
+
+        tv_goto.setOnClickListener {
+            AidlActivity.startActivity(this)
+        }
+
+
+
     }
 
     override fun onDestroy() {
