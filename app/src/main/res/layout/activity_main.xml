@@ -1,44 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AidlActivity">
 
     <TextView
-            android:id="@+id/tv_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="添加书本"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-
-    <TextView
-            android:id="@+id/tv_get"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_add"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:text="获取书本"/>
-
+        android:id="@+id/aidl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="aidl进程"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:id="@+id/tv_goto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_get"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:text="跳转自定义aidl页面"/>
+        android:id="@+id/custom_aidl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="xjf进程"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/custom_aidl" />
+
+    <TextView
+        android:id="@+id/messenger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="messenger"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/custom_aidl" />
+
+    <TextView
+        android:id="@+id/contentProvider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="contentProvider"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/messenger" />
 
 
-
-</android.support.constraint.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

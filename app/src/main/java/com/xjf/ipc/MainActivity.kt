@@ -1,55 +1,39 @@
 package com.xjf.ipc
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log
-import com.xjf.customaidl.AidlActivity
+import com.example.contentprovider.ProviderActivity
+import com.example.messenager.MessengerActivity
+import com.xjf.customaidl.CustomAidlActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-
-class MainActivity : AppCompatActivity() {
-
-    private val mCallBackInterface = object : NotifyCallBackInterface.Stub(){
-        override fun notifyNewBook(book: Book?) {
-            Log.d("xjf",book?.name)
-        }
-    }
-
-    private val mCallBackInterface1 = object : NotifyCallBackInterface.Stub(){
-        override fun notifyNewBook(book: Book?) {
-            Log.d("xjf",book?.name)
-        }
-    }
-
+/**
+ * description: 专家个人信息界面
+ * @author xuejingfei
+ * create at 19-6-17
+ */
+class MainActivity :Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        BookServiceManager.getInstance().bindService(this)
-        BookServiceManager.getInstance().registerListener(mCallBackInterface)
-        BookServiceManager.getInstance().registerListener(mCallBackInterface1)
-        tv_add.setOnClickListener {
-            BookServiceManager.getInstance().addBook(Book("数学", "数学书"))
-            BookServiceManager.getInstance().addBook(Book("语文", "语文书"))
+
+        aidl.setOnClickListener {
+            startActivity(Intent(this,AidlActivity::class.java))
+        }
+
+        custom_aidl.setOnClickListener {
+            startActivity(Intent(this,CustomAidlActivity::class.java))
+        }
+
+        messenger.setOnClickListener{
+            startActivity(Intent(this, MessengerActivity::class.java))
+        }
+
+        contentProvider.setOnClickListener {
+            startActivity(Intent(this, ProviderActivity::class.java))
         }
 
 
-        tv_get.setOnClickListener {
-            for(book in BookServiceManager.getInstance().books) {
-                Log.d("xjf",book.name)
-            }
-        }
-
-        tv_goto.setOnClickListener {
-            AidlActivity.startActivity(this)
-        }
-
-
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        BookServiceManager.getInstance().unRegisterListener(mCallBackInterface)
-        BookServiceManager.getInstance().unBindService(this)
     }
 }

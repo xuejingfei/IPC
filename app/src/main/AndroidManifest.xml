@@ -20,6 +20,9 @@
             </intent-filter>
         </activity>
 
+
+        <activity android:name=".AidlActivity"/>
+
         <service android:name=".AidlService"
                  android:process=":xjf"/>
 

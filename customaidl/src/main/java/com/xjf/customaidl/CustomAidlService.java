@@ -3,7 +3,6 @@ package com.xjf.customaidl;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.util.Log;
 import com.xjf.customaidl.aidl.Book;
@@ -18,8 +17,8 @@ import java.util.List;
  * @author xuejingfei
  * create at 19-6-17
  */
-public  class AidlService extends Service {
-    private final String TAG = AidlService.class.getSimpleName();
+public  class CustomAidlService extends Service {
+    private final String TAG = CustomAidlService.class.getSimpleName();
     private List<Book> books = new ArrayList<>();
 
     @Override

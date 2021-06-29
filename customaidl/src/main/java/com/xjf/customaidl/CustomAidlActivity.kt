@@ -2,17 +2,17 @@ package com.xjf.customaidl
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.xjf.customaidl.aidl.Book
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_custom_aidl.*
 
-class AidlActivity : AppCompatActivity() {
+class CustomAidlActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_custom_aidl)
         BookServiceManager.getInstance().bindService(this)
         tv_add.setOnClickListener {
             BookServiceManager.getInstance().addBook(Book("数学", "数学书"))
@@ -32,7 +32,7 @@ class AidlActivity : AppCompatActivity() {
     companion object {
         @JvmStatic
          fun startActivity(context: Context){
-            val intent = Intent(context,AidlActivity::class.java)
+            val intent = Intent(context,CustomAidlActivity::class.java)
             context.startActivity(intent)
         }
     }

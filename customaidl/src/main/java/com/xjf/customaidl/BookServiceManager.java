@@ -10,7 +10,6 @@ import android.util.Log;
 import com.xjf.customaidl.aidl.Book;
 import com.xjf.customaidl.aidl.BookInterface;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,20 +52,20 @@ public class BookServiceManager {
     };
 
     public void bindService(Context context) {
-        Intent intent = new Intent(context, AidlService.class);
+        Intent intent = new Intent(context, CustomAidlService.class);
         context.bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
 
     public void startService(Context context) {
-        Intent intent = new Intent(context, AidlService.class);
+        Intent intent = new Intent(context, CustomAidlService.class);
         context.startService(intent);
     }
 
 
     public void unBindService(Context context) {
         context.unbindService(mConnection);
-        Intent intent = new Intent(context, AidlService.class);
+        Intent intent = new Intent(context, CustomAidlService.class);
         context.stopService(intent);
     }
 
