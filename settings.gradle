@@ -1,3 +1,5 @@
+include ':socket'
+include ':BindPool'
 include ':contentProvider'
 include ':messenager'
 include ':app', ':customaidl'

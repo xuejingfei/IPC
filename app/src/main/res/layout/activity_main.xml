@@ -44,4 +44,24 @@
         app:layout_constraintTop_toBottomOf="@id/messenger" />
 
 
+    <TextView
+        android:id="@+id/binderPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BinderPool"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contentProvider" />
+
+
+    <TextView
+        android:id="@+id/socket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="socket"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/binderPool" />
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

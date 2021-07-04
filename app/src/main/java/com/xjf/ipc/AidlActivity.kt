@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log
 import com.xjf.customaidl.CustomAidlActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_aidl.*
 
 
 class AidlActivity : AppCompatActivity() {

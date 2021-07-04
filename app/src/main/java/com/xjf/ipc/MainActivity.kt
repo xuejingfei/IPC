@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import com.example.contentprovider.ProviderActivity
 import com.example.messenager.MessengerActivity
+import com.example.socket.TcpActivity
+import com.xjf.bindpool.BinderPoolActivity
 import com.xjf.customaidl.CustomAidlActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -34,6 +36,13 @@ class MainActivity :Activity() {
             startActivity(Intent(this, ProviderActivity::class.java))
         }
 
+        binderPool.setOnClickListener{
+            startActivity(Intent(this, BinderPoolActivity::class.java))
+        }
+
+        socket.setOnClickListener {
+            startActivity(Intent(this,TcpActivity::class.java))
+        }
 
     }
 }
